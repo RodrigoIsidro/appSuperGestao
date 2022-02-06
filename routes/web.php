@@ -24,3 +24,7 @@ Route::get('/sobre-nos', function () {
 Route::get('/contato', function () {
     return 'Contato!';
 });
+
+Route::get('/chat', function () {
+    return 'Chat!';
+});
