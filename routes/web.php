@@ -43,12 +43,6 @@ Route::fallback(function () {
     echo 'A rota acessada não exite, <a href="'.route('site.index').'">clique aqui</a> para ir para a página inicial!';
 });
 
-Route::get('/rota1', function() {
-    echo 'Rota 1';
-})->name('site.rota1');
-
-Route::get('/rota2', function() {
-    return redirect()->route('site.rota1');
-})->name('site.rota2');
-
-//Route::redirect('/rota2', '/rota1');
+Route::get(
+    '/teste/{p1}/{p2}', 'TesteController@teste'
+)->where('p1', '[0-9]+')->where('p2', '[0-9]+')->name('site.teste');
