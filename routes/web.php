@@ -39,6 +39,9 @@ Route::prefix('/app')->group(function() {
     Route::get('/produtos', function() { return 'Produtos'; })->name('app.produtos');
 });
 
+Route::fallback(function () {
+    echo 'A rota acessada não exite, <a href="'.route('site.index').'">clique aqui</a> para ir para a página inicial!';
+});
 
 Route::get('/rota1', function() {
     echo 'Rota 1';
