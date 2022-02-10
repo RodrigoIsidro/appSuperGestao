@@ -24,7 +24,9 @@
 --}}
 
 @foreach ($fornecedores as $fornecedor)
-    Nome: {{ $fornecedor['nome'] }}
+        {{ $loop->iteration }}
+    <br />
+        Nome: {{ $fornecedor['nome'] }}
     <br />
     @if($fornecedor['status'])
         Status: Ativo
@@ -32,10 +34,22 @@
         Status: Inativo
     @endif
     <br />
-    @if(isset($fornecedor['cnpj']))
-        Cnpj: {{$fornecedor['cnpj']}}
-    @else
-        Cnpj não foi informado
-    @endif
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'não foi informado'}}
+    <br />
+        Fone: ({{ $fornecedor['ddd'] ?? '' }}) {{ $fornecedor['telefone'] ?? '' }}
+    <br />
+    @switch($fornecedor['ddd'])
+        @case (11)
+            São Paulo - SP
+            @break
+        @case (85)
+            Fortaleza - MG
+            @break
+        @case (61)
+            Brasília - DF
+            @break
+        @default
+            Estado não informado
+    @endswitch
     <br /><br />
 @endforeach
